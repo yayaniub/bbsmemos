@@ -124,5 +124,21 @@
   <script src="https://fastly.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
   <script src="https://immmmm.com/bbs-lmm.js"></script>
+    
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script>
+//随机日志
+function randomPost() {
+  fetch('/sitemap.xml').then(res => res.text()).then(str => (new window.DOMParser()).parseFromString(str, "text/xml")).then(data => {
+      let ls = data.querySelectorAll('url loc');
+      let locationHref,locSplit;
+      do {
+          locationHref = ls[Math.floor(Math.random() * ls.length)].innerHTML
+          locSplit = locationHref.split('/')[3] || ''
+      } while (locSplit == '' || locSplit == 'tags' || locSplit == 'posts'); 
+      location.href = locationHref
+  })
+}
+</script>
 <body>
 </html>
